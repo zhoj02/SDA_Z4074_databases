@@ -1,5 +1,5 @@
-from sqlalchemy.orm import declarative_base
-from sqlalchemy import Column, String, Integer, Date, create_engine
+from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy import Column, String, Integer, Date, create_engine, ForeignKey
 
 with open("moje_heslo.txt", 'r') as file:
     password = file.read()
@@ -17,6 +17,7 @@ class Cars(Base):
     year = Column(Integer, nullable=False)
     horse_power = Column(Integer, nullable=False)
     price_per_day = Column(Integer, nullable=False)
+    bookings = relationship('Bookings', back_populates='car', cascade="all, delete", passive_deletes=True)
 
     def __repr__(self):
         return f"{self.model} {self.year}"
@@ -30,14 +31,17 @@ class Clients(Base):
     surname = Column(String(30), nullable=False)
     address = Column(String(30), nullable=False)
     city = Column(String(30), nullable=False)
+    bookings = relationship('Bookings', back_populates='client', cascade="all, delete", passive_deletes=True)
 
 
 class Bookings(Base):
     __tablename__ = 'bookings'
 
     booking_id = Column(Integer, primary_key=True, autoincrement=True)
-    client_id = Column(Integer, nullable=False)
-    car_id = Column(Integer, nullable=False)
+    client_id = Column(Integer, ForeignKey('clients.client_id', ondelete="CASCADE"), nullable=False)
+    car_id = Column(Integer, ForeignKey('cars.car_id', ondelete="CASCADE"), nullable=False)
     start_date = Column(Date, nullable=False)
     end_date = Column(Date, nullable=False)
     total_amount = Column(Integer, nullable=False)
+    client = relationship('Clients', back_populates='bookings')
+    car = relationship('Cars', back_populates='bookings')
