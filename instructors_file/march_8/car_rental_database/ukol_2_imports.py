@@ -1,15 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy import Column, String, Integer, Date
-from database_definition import Cars, Clients, Bookings
+from database_definition import Cars, Clients, Bookings, db
 
-with open("moje_heslo.txt", 'r') as file:
-    password = file.read()
-
-db = create_engine(f'mysql+mysqlconnector://root:{password}@localhost:3306/car_rental')
 
 Base = declarative_base()
-
 
 Session = sessionmaker(bind=db)
 session = Session()
