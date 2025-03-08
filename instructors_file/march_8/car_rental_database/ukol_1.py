@@ -1,11 +1,11 @@
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, String, Integer, Date
 
 with open("moje_heslo.txt", 'r') as file:
     password = file.read()
 
-db = create_engine(f'mysql+mysqlconnector://root:{password}@localhost:3306/')
+db = create_engine(f'mysql+mysqlconnector://root:{password}@localhost:3306/car_rental')
 
 Base = declarative_base()
 
