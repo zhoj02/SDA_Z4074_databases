@@ -8,4 +8,4 @@ for client in session.query(Clients).all():
     print(client)
 
 for car in session.query(Cars).all():
-    print(car)
+    print(car.model)
