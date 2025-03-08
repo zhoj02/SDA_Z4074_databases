@@ -18,6 +18,9 @@ class Cars(Base):
     horse_power = Column(Integer, nullable=False)
     price_per_day = Column(Integer, nullable=False)
 
+    def __repr__(self):
+        return f"{self.model} {self.year}"
+
 
 class Clients(Base):
     __tablename__ = 'clients'
