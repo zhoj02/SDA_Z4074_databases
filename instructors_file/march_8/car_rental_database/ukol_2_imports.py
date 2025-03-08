@@ -1,7 +1,5 @@
-from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
-from sqlalchemy import Column, String, Integer, Date
-from database_definition import Cars, Clients, Bookings, db
+from database_definition import Cars, Clients, db
 
 
 Base = declarative_base()
