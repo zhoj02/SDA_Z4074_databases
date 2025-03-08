@@ -1,7 +1,10 @@
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 
-db = create_engine('mysql+mysqlconnector://root:YourNewPassword@localhost:3306/')
+with open("moje_heslo.txt", 'r') as file:
+    password = file.read()
+
+db = create_engine(f'mysql+mysqlconnector://root:{password}@localhost:3306/')
 
 Session = sessionmaker(bind=db)
 
