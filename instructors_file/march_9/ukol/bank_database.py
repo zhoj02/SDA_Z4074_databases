@@ -1,5 +1,5 @@
 """
-Vytvorte databazi bank.
+Vytvorte databazi banky.
 Bude mi 2 tabulky:
 1. Transakce
 2. Zakaznik
