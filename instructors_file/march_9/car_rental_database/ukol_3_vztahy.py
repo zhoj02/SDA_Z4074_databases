@@ -7,7 +7,7 @@ Session = sessionmaker(bind=db)
 session = Session()
 
 #1
-result = session.query(Bookings)
+result = session.query(Bookings).filter(Bookings.client_id==3)
 for booking in result:
     print(booking)
 

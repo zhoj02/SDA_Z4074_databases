@@ -45,3 +45,6 @@ class Bookings(Base):
     total_amount = Column(Integer, nullable=False)
     client = relationship('Clients', back_populates='bookings')
     car = relationship('Cars', back_populates='bookings')
+
+    def __repr__(self):
+        return f"Booking_id: {self.booking_id}, client_id: {self.client_id}, car_id: {self.car_id}"
