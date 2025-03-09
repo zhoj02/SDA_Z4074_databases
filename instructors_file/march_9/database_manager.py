@@ -1,5 +1,6 @@
 from mysql.connector import connect
 
+
 class DatabaseManager:
     def __init__(
             self,
@@ -12,17 +13,15 @@ class DatabaseManager:
         self.database_server = database_server
         self.database_user = database_user
         self.database_password = database_password
+        self._connection = self._get_connection()
 
-    def connect(self):
-        with connect(user='root', password='YourNewPassword') as conn:
-            with conn.cursor() as cursor:
-                cursor.execute(test_select)
-                print(cursor.fetchall())
-
-        ...
+    def _get_connection(self):
+        return connect(user='root', password='YourNewPassword')
 
     def select(self, select):
-        ...
+        with self._connection.cursor() as cursor:
+            cursor.execute(select)
+            return cursor.fetchall()
 
     def insert(self, data, table_name):
         ...
