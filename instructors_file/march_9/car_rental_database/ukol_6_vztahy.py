@@ -7,7 +7,11 @@ from instructors_file.march_8.car_rental_database.database_definition import Car
 Session = sessionmaker(bind=db)
 session = Session()
 
-bookings = session.query(func.sum(Bookings.total_amount)).group_by(Bookings.client_id)
+bookings = (
+    session
+    .query(Bookings.client_id, func.sum(Bookings.total_amount))
+    .group_by(Bookings.client_id)
+)
 for booking in bookings:
     print(booking)
 
