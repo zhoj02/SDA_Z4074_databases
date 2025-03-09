@@ -14,3 +14,16 @@ session = Session()
 
 result = session.query(Transactions).filter(Transactions.amount < 1000).all()
 print(result)
+print()
+result = session.query(Transactions).filter(Transactions.amount > 1000).all()
+print(result)
+print()
+
+result = session.query(Transactions).filter(Transactions.date > "2022-08-10").all()
+print(result)
+print()
+
+result = session.query(Transactions).filter(Transactions.date < "2022-08-10").all()
+print(result)
+print()
+
