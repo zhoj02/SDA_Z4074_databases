@@ -7,9 +7,15 @@ Session = sessionmaker(bind=db)
 session = Session()
 
 #2
-result = session.query(Bookings).filter_by(client_id=5)
+print("Verze 2")
+bookings = session.query(Bookings).filter_by(client_id=5)
 # result = session.query(Bookings).filter(Bookings.client_id==5)
-for booking in result:
+for booking in bookings:
     print(booking.car)
-
+print("")
+print("Verze 1")
 #1
+clients = session.query(Clients).filter_by(client_id=5)
+for client in clients:
+    print(client)
+

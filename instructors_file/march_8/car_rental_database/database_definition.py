@@ -33,6 +33,8 @@ class Clients(Base):
     city = Column(String(30), nullable=False)
     bookings = relationship('Bookings', back_populates='client', cascade="all, delete", passive_deletes=True)
 
+    def __repr__(self):
+        return f"{self.client_id}, name, surname: {self.name, self.surname}"
 
 class Bookings(Base):
     __tablename__ = 'bookings'
