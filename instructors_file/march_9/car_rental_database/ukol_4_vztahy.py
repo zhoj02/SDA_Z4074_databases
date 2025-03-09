@@ -14,8 +14,10 @@ for booking in bookings:
     print(booking.car)
 print("")
 print("Verze 1")
+
 #1
 clients = session.query(Clients).filter_by(client_id=5)
 for client in clients:
-    print(client)
+    for booking in client.bookings:
+        print(booking.car)
 
