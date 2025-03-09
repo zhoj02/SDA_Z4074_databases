@@ -28,16 +28,18 @@ print(transactions_under_median)
 
 #6
 mean_amount = statistics.mean(amounts)
-transactions_over_median = session.query(Transactions).filter(Transactions.amount < mean_amount).all()
-print(transactions_over_median)
+transactions_under_median = session.query(Transactions).filter(Transactions.amount < mean_amount).all()
+print(transactions_under_median)
 
 #6
 mean_amount = statistics.mean(amounts)
-transactions_over_median = session.query(Transactions).filter(Transactions.amount < mean_amount).all()
-print(transactions_over_median)
+transactions_under_mean = session.query(Transactions).filter(Transactions.amount < mean_amount).all()
+print(transactions_under_mean)
 
 #7
 quantile_30 = statistics.quantiles(amounts, n=100)[30]
-print(quantile_30)
+transactions_under_30_quantile = session.query(Transactions).filter(Transactions.amount < mean_amount).all()
+print(transactions_under_30_quantile)
+
 
 
