@@ -17,6 +17,9 @@ class Transactions(Base):
     date = Column(Time, nullable=False)
     amount = Column(Integer, nullable=False)
 
+    def __repr__(self):
+        return f"Transaction_id: {self.car_id}, date: {self.date}, amount: {self.amount}"
+
 
 class Clients(Base):
     __tablename__ = 'clients'
