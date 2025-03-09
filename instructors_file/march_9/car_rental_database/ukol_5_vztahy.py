@@ -9,7 +9,7 @@ session = Session()
 bookings = session.query(Bookings)
 for booking in bookings:
     print(booking)
+
 """
-Vysledek:
-1, Jan Kowalski, 1200
+Id, jmeno zakaznika, castku za pujceni
 """
