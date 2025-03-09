@@ -9,7 +9,8 @@ session = Session()
 
 bookings = (
     session
-    .query(Bookings.client_id, func.sum(Bookings.total_amount))
+    .query(Bookings.client_id, Clients.name, Clients.surname, func.sum(Bookings.total_amount))
+    .join(Clients)
     .filter(
         and_(Bookings.start_date >= '2020-07-10', Bookings.end_date <= '2020-07-17')
     )
