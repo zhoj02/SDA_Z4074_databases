@@ -1,5 +1,5 @@
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.sql import select
+from sqlalchemy.sql import select, func
 from sqlalchemy import and_
 
 from instructors_file.march_8.car_rental_database.database_definition import Cars, Bookings, Clients, db
@@ -7,5 +7,31 @@ from instructors_file.march_8.car_rental_database.database_definition import Car
 Session = sessionmaker(bind=db)
 session = Session()
 
-bookings = session.query(Bookings).all()
+bookings = session.query(func.sum(Bookings.total_amount)).group_by(Bookings.client_id).all()
 print(bookings)
+
+"""
+SELECT sum(booking_amount) from bookings group by client_id
+"""
+"""
+client_id, booking_amount
+1, 1000
+1, 1200
+2,1700
+1,2000
+2, 1500
+1,8000
+"""
+
+"""
+client_id, booking_amount
+1, 1000
+1, 1200
+1,2000
+1,8000
+
+
+2, 1700
+2, 1500
+
+"""
