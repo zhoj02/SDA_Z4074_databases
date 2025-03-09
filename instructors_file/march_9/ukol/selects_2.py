@@ -6,6 +6,7 @@
 # Ukol c.8 - Vyber zákazníka, jehož transakce proběhla jako poslední
 
 from sqlalchemy.orm import sessionmaker
+import statistics
 
 from database_definition_bank import Transactions, db, Clients
 
@@ -18,4 +19,25 @@ amounts = []
 for amount in all_transactions:
     amounts.append(amount[0])
 print(amounts)
+
+median_amount = statistics.median(amounts)
+print(median_amount)
+#5
+transactions_under_median = session.query(Transactions).filter(Transactions.amount < median_amount).all()
+print(transactions_under_median)
+
+#6
+mean_amount = statistics.mean(amounts)
+transactions_over_median = session.query(Transactions).filter(Transactions.amount < mean_amount).all()
+print(transactions_over_median)
+
+#6
+mean_amount = statistics.mean(amounts)
+transactions_over_median = session.query(Transactions).filter(Transactions.amount < mean_amount).all()
+print(transactions_over_median)
+
+#7
+quantile_30 = statistics.quantiles(amounts, n=100)[30]
+print(quantile_30)
+
 
