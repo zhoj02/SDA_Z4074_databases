@@ -7,7 +7,8 @@
 from database_definition_bank import Transactions, db, Clients
 
 clients = [
-    {},
-    {},
-    {},
+    {"name": "Jan", "surname": "Zhouf", "city": "Prague"},
+    {"name": "Jan", "surname": "Marek", "city": "Kolín"},
+    {"name": "Petr", "surname": "Malý", "city": "Bratislava"},
 ]
+
