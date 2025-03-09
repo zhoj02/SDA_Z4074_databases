@@ -12,7 +12,7 @@ for booking in result:
     print(booking)
 
 #2
-select = select(Bookings)
+select = select(Bookings).where(Bookings.client_id==3)
 conn = db.connect()
 result = conn.execute(select).fetchall()
 print(result)
