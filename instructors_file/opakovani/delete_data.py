@@ -25,4 +25,4 @@ session = sessionmaker(db)()
 f = session.query(Item).first()
 
 session.delete(f)
-
+session.commit()
