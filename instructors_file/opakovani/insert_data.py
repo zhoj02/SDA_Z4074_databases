@@ -16,3 +16,7 @@ class Item(Base):
     id = Column(Integer, primary_key=True)
     nazev_polozky = Column(String(20))
 
+
+session = sessionmaker(db)()
+
+session.add_all()
