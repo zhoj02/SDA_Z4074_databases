@@ -22,5 +22,7 @@ class Item(Base):
 
 session = sessionmaker(db)()
 
-print(session.query(Item).filter(Item.id==1).first())
-print(session.query(Item).filter_by(id=1).first())
+f = session.query(Item).first()
+
+session.delete(f)
+
