@@ -8,3 +8,12 @@ with open("moje_heslo.txt", 'r') as file:
 db = create_engine(f'mysql+mysqlconnector://root:{password}@localhost:3306/hobby_market')
 
 Base = declarative_base()
+
+class Item(Base):
+    __tablename__ = 'item'
+
+    id = Column(Integer, primary_key=True)
+    nazev_polozky = Column(String(20))
+
+
+Base.metadata.create_all(db)
