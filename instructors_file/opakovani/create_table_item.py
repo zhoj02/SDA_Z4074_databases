@@ -25,5 +25,5 @@ class Barva(Base):
     kategorie = Column(String(20))
     hexakod = Column(String(20))
 
-
+Base.metadata.drop_all(db)
 Base.metadata.create_all(db)

@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, text, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy import Column, String, Integer, Time
 
@@ -15,9 +15,10 @@ class Item(Base):
 
     id = Column(Integer, primary_key=True)
     nazev_polozky = Column(String(20))
+    barva = Column(Integer, ForeignKey('barva.id'))
 
     def __repr__(self):
-        return self.nazev_polozky
+        return self.barva
 
 
 session = sessionmaker(db)()
