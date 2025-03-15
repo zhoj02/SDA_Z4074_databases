@@ -31,7 +31,7 @@ session = sessionmaker(db)()
 
 session.add_all(
     [
-    Barva(id=1, nazev="svetle namoricky modra", kategorie="modra", hexakod="#ADD8E6"),
+    Barva(id=1, nazev="svetle modra", kategorie="modra", hexakod="#ADD8E6"),
     ]
 )
 
