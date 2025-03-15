@@ -28,3 +28,4 @@ class Clients(Base):
     name = Column(String(30), nullable=False)
     surname = Column(String(30), nullable=False)
     city = Column(String(30), nullable=False)
+
