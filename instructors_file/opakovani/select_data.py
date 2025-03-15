@@ -29,5 +29,5 @@ class Barva(Base):
 
 session = sessionmaker(db)()
 
-print(session.query(Item).filter(Item.id==1).first().barva)
+print(session.query(Item).filter(Item.id==1).first().barva.kategorie)
 print(session.query(Item).filter_by(id=1).first())
