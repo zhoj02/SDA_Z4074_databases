@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine, text, ForeignKey
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 from sqlalchemy import Column, String, Integer, Time
 
 with open("moje_heslo.txt", 'r') as file:
@@ -15,13 +15,19 @@ class Item(Base):
 
     id = Column(Integer, primary_key=True)
     nazev_polozky = Column(String(20))
-    barva = Column(Integer, ForeignKey('barva.id'))
+    barva_id = Column(Integer, ForeignKey('barva.id'))
+    barva = relationship("Barva")
 
-    def __repr__(self):
-        return self.barva
+
+class Barva(Base):
+    __tablename__ = 'barva'
+    id = Column(Integer, primary_key=True)
+    nazev = Column(String(20))
+    kategorie = Column(String(20))
+    hexakod = Column(String(20))
 
 
 session = sessionmaker(db)()
 
-print(session.query(Item).filter(Item.id==1).first())
+print(session.query(Item).filter(Item.id==1).first().barva)
 print(session.query(Item).filter_by(id=1).first())
