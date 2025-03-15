@@ -31,8 +31,15 @@ session = sessionmaker(db)()
 
 session.add_all(
     [
-    Item(id=1, nazev_polozky="pila na hrebiky"),
-    Item(id=2, nazev_polozky="pila na cihly"),
+    Barva(id=1, nazev="svetle namoricky modra", kategorie="modra", hexakod="#ADD8E6"),
     ]
 )
+
+session.add_all(
+    [
+    Item(id=1, nazev_polozky="pila na hrebiky", barva_id=1),
+    Item(id=2, nazev_polozky="pila na cihly", barva_id=1),
+    ]
+)
+
 session.commit()
