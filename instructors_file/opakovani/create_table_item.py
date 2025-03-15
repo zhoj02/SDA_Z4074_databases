@@ -15,7 +15,7 @@ class Item(Base):
 
     id = Column(Integer, primary_key=True)
     nazev_polozky = Column(String(20))
-    barva = Column(Integer, ForeignKey())
+    barva = Column(Integer, ForeignKey('barva.id'))
 
 
 class Barva(Base):
