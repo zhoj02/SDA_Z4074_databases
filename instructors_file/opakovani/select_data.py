@@ -16,7 +16,11 @@ class Item(Base):
     id = Column(Integer, primary_key=True)
     nazev_polozky = Column(String(20))
 
+    def __repr__(self):
+        return self.nazev_polozky
+
 
 session = sessionmaker(db)()
 
-print(session.query(Item).all())
+print(session.query(Item).filter(Item.id==1).first())
+print(session.query(Item).filter_by(id=1).first())
