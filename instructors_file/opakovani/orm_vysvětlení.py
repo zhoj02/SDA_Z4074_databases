@@ -15,3 +15,4 @@ class Zamestnanci:
     prijmeni = Column(String)
 
 zamestnanec_1 = Zamestnanci(id=1, jmeno="pepa", prijmeni="novak")
+
