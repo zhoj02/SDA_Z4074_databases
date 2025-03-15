@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine, text, ForeignKey
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker, relationship
 from sqlalchemy import Column, String, Integer, Time
 
 with open("moje_heslo.txt", 'r') as file:
@@ -15,7 +15,8 @@ class Item(Base):
 
     id = Column(Integer, primary_key=True)
     nazev_polozky = Column(String(20))
-    barva = Column(Integer, ForeignKey('barva.id'))
+    barva_id = Column(Integer, ForeignKey('barva.id'))
+    barva = relationship()
 
 
 class Barva(Base):
