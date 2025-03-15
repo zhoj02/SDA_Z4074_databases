@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, text
+from sqlalchemy import create_engine, text, ForeignKey
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy import Column, String, Integer, Time
 
@@ -15,6 +15,15 @@ class Item(Base):
 
     id = Column(Integer, primary_key=True)
     nazev_polozky = Column(String(20))
+    barva = Column(Integer, ForeignKey())
+
+
+class Barva(Base):
+    __tablename__ = 'barva'
+    id = Column(Integer, primary_key=True)
+    nazev = Column(String(20))
+    kategorie = Column(String(20))
+    hexakod = Column(String(20))
 
 
 Base.metadata.create_all(db)
