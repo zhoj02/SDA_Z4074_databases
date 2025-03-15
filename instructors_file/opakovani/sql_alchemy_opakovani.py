@@ -8,3 +8,4 @@ with open("moje_heslo.txt", 'r') as file:
 db = create_engine(f'mysql+mysqlconnector://root:{password}@localhost:3306/bank')
 
 Base = declarative_base()
+select_test = "SELECT 1;"
