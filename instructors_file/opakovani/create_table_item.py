@@ -9,6 +9,7 @@ db = create_engine(f'mysql+mysqlconnector://root:{password}@localhost:3306/hobby
 
 Base = declarative_base()
 
+
 class Item(Base):
     __tablename__ = 'item'
 
