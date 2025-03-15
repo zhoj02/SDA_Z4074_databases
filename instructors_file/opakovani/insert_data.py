@@ -19,4 +19,9 @@ class Item(Base):
 
 session = sessionmaker(db)()
 
-session.add_all()
+session.add_all(
+    [
+    Item(id=1, nazev_polozky="pila na hrebiky"),
+    Item(id=1, nazev_polozky="pila na cihly"),
+    ]
+)
