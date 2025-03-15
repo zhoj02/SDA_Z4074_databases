@@ -22,6 +22,7 @@ session = sessionmaker(db)()
 session.add_all(
     [
     Item(id=1, nazev_polozky="pila na hrebiky"),
-    Item(id=1, nazev_polozky="pila na cihly"),
+    Item(id=2, nazev_polozky="pila na cihly"),
     ]
 )
+session.commit()
